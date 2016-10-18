@@ -352,7 +352,7 @@ class bitpay extends PaymentModule {
     public function readBitcoinpaymentdetails($id_order) {
       $db = Db::getInstance();
       $result = $db->ExecuteS('SELECT * FROM `' . _DB_PREFIX_ . 'order_bitcoin` WHERE `id_order` = ' . intval($id_order) . ';');
-      return $result[0];
+      return isset($result[0]) ? $result[0] : null;
     }
 
     public function hookInvoice($params) {
